@@ -14,12 +14,9 @@ class Transposition:
     def crypt(self):
         if self.flag == False:
 
-            array = []
             newString = ''
 
-            for i in range(self.parts):
-                part = list(self.string[i*self.lenOfRow:(i+1)*self.lenOfRow])
-                array.append(part)
+            array = list(list(self.string[i*self.lenOfRow:(i+1)*self.lenOfRow]) for i in range(self.parts))
 
             for i in self.indexes:
                 for j in range(self.parts):
@@ -60,7 +57,7 @@ class Transposition:
 
             reshape = [['' for i in range(self.lenOfRow)] for i in range(self.parts)]
 
-            point=0
+            point = 0
             for i in self.indexes:
                 for j in range(self.parts):
                     reshape[j][i[0]] = array[point][j]
